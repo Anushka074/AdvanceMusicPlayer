@@ -1,0 +1,440 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --mainColor: #000;
+  --mainLightColor: rgba(255, 255, 255, 0.8);
+  --mainDimColor: rgba(0, 0, 0, 0.6);
+  --accentColor: #ff4081;
+  --backgroundColor: #ffcccb;
+}
+
+.logo {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 100px; /* Adjust the size as needed */
+  height: auto;
+}
+
+body {
+  background-image: url('https://i0.wp.com/lh5.googleusercontent.com/proxy/-Goxyc4a_RM8bUsf5v9RHmKMZBrZ0PoIFJsfB3NKWjO1ADs_ggAh2lJ1m9uuA4jFr1vdyPzp3_7iyTzLq6oHbG90-sAXsx4jjnBW-Q=w1200-h630-p-k-no-nu');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.music-Container {
+  width: 350px;
+  padding: 35px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 36px;
+  box-shadow: 0 0 20px rgba(26, 26, 26, 0.2), 0 0 40px rgba(26, 26, 26, 0.2);
+  backdrop-filter: blur(15px);
+  background-color: rgba(255, 255, 255, 0.84);
+}
+
+.musicPlayer {
+  font-size: 1.5rem;
+  color: var(--accentColor);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  font-family: 'Pacifico', cursive;
+}
+
+.music-Head-Name {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.music-Artist-Name {
+  color: var(--mainDimColor);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+#songAvatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 18px 0;
+  cursor: pointer;
+  animation: animateAvatar 0.5s linear infinite;
+}
+
+@keyframes animateAvatar {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.musicTimerDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 600;
+}
+
+.musicProgressBar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #ffb6c1;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.musicProgressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--mainColor);
+  cursor: pointer;
+}
+
+.musicProgressBar::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--mainColor);
+  cursor: pointer;
+}
+
+.playBtn,
+.musicControler {
+  font-size: 32px;
+  color: var(--mainColor);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.playBtn:hover,
+.musicControler:hover {
+  color: var(--accentColor);
+}
+
+/* Playlist Styles */
+.playlist {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 250px;
+  height: calc(100% - 40px);
+  background: rgba(255, 182, 193, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  color: var(--mainColor);
+  font-family: "Poppins";
+}
+
+.playlist.hidden {
+  display: none;
+}
+
+.playlist h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+  color: var(--accentColor);
+  text-shadow: 0 2px 4px rgba(255, 20, 147, 0.5);
+}
+
+.playlist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.playlist li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.playlist li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.playlist li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.playlist li div {
+  flex-grow: 1;
+}
+
+.playlist li p {
+  margin: 0;
+  color: var(--mainColor);
+}
+
+.playlist button {
+  background: none;
+  border: 1px solid var(--mainColor);
+  color: var(--mainColor);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.playlist button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Add Song Form */
+.addSongForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.addSongForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addSongForm label {
+  margin-bottom: 10px;
+}
+
+.addSongForm input[type="text"],
+.addSongForm input[type="file"] {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.addSongForm button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.addSongForm button[type="submit"] {
+  background: var(--accentColor);
+  color: #fff;
+}
+
+.addSongForm button[type="submit"]:hover {
+  background: #e91e63;
+}
+
+.addSongForm button[type="button"] {
+  background: #dc3545;
+  color: #fff;
+}
+
+.addSongForm button[type="button"]:hover {
+  background: #c82333;
+}
+
+@media (max-width: 768px) {
+  .music-Container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .musicProgressBar {
+    height: 8px;
+  }
+
+  .playBtn,
+  .musicControler {
+    font-size: 24px;
+  }
+
+  .musicTimerDiv {
+    font-size: 0.9rem;
+  }
+
+  #songAvatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .changeBackBtn {
+    width: 150px;
+  }
+
+  .youtube-Subs {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .youtube-Subs p {
+    font-size: 16px;
+  }
+}
+
+/* Add Song Form */
+.addSongForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.6)
+  );
+  color: #000;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  width: 90%;
+  max-width: 500px;
+  font-family: "Poppins", sans-serif;
+}
+
+.addSongForm h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.8rem;
+  color: var(--accentColor);
+  text-shadow: 0 2px 5px rgba(255, 20, 147, 0.3);
+}
+
+.addSongForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addSongForm label {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.addSongForm input[type="text"],
+.addSongForm input[type="file"] {
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.addSongForm input[type="text"]:focus,
+.addSongForm input[type="file"]:focus {
+  border-color: var(--accentColor);
+  box-shadow: 0 0 8px rgba(255, 20, 147, 0.3);
+  outline: none;
+}
+
+.addSongForm button {
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.addSongForm button[type="submit"] {
+  background: var(--accentColor);
+  color: #fff;
+}
+
+.addSongForm button[type="submit"]:hover {
+  background: #e91e63;
+  transform: translateY(-2px);
+}
+
+.addSongForm button[type="button"] {
+  background: #dc3545;
+  color: #fff;
+}
+
+.addSongForm button[type="button"]:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .addSongForm {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .addSongForm h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Toggle button for sidebar */
+.toggleButton {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  background-color: #37040c;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.toggleButton:hover {
+  background-color: #e91e63;
+}
+
+.toggleSidebarBtn{
+  position: absolute;
+  margin-top: -650px;
+  margin-left: -1095px;  
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+.toggleSidebarBtn:hover{
+  background-color: #e36690;
+}
